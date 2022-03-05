@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "drone.fullname" . }}
+  labels:
+    {{- include "drone.labels" . | nindent 4 }}
+data:
+  DRONE_SERVER_HOST: {{ .Values.drone.server.host | quote }}
+  DRONE_SERVER_PROTO: {{ .Values.drone.server.proto | quote }}
+  {{- if .Values.drone.github.clientId }}
+  DRONE_GITHUB_CLIENT_ID: {{ .Values.drone.github.clientId | quote }}
+  {{- end }}
+  {{- if .Values.drone.env }}
+  {{- .Values.drone.env | toYaml | nindent 2 }}
+  {{- end }}

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "drone-kube.fullname" . }}
+  labels:
+    {{- include "drone-kube.labels" . | nindent 4 }}
+data:
+  DRONE_RPC_HOST: {{ .Values.drone.rpc.host | quote }}
+  DRONE_RPC_PROTO: "http"
+  DRONE_UI_USERNAME: {{ .Values.drone.ui.username | quote }}
+  DRONE_NAMESPACE_DEFAULT: {{ .Values.drone.defaultNamespace | quote }}
+  {{- if .Values.drone.env }}
+  {{- .Values.drone.env | toYaml | nindent 2 }}
+  {{- end }}
