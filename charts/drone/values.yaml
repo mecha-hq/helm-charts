@@ -146,9 +146,11 @@ drone:
     prefix: ""
 
   server:
+    host: localhost
+    proto: http
     proxy:
-      host: localhost
-      proto: http
+      host: ""
+      proto: ""
 
   starlark:
     enabled: ""
