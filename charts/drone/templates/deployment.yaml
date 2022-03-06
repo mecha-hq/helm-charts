@@ -33,26 +33,10 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: DRONE_RPC_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "drone.fullname" . }}
-                  key: rpcSecret
-            - name: DRONE_COOKIE_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "drone.fullname" . }}
-                  key: cookieSecret
-            {{- if .Values.drone.github.clientSecret }}
-            - name: DRONE_GITHUB_CLIENT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "drone.fullname" . }}
-                  key: githubClientSecret
-            {{- end }}
           envFrom:
             - configMapRef:
+                name: {{ include "drone.fullname" . }}
+            - secretRef:
                 name: {{ include "drone.fullname" . }}
           volumeMounts:
             - mountPath: /data

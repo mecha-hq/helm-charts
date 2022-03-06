@@ -13,9 +13,6 @@ data:
   {{- if .Values.drone.bitbucket.client.id }}
   DRONE_BITBUCKET_CLIENT_ID: {{ .Values.drone.bitbucket.client.id | quote }}
   {{- end }}
-  {{- if .Values.drone.bitbucket.client.secret }}
-  DRONE_BITBUCKET_CLIENT_SECRET: {{ .Values.drone.bitbucket.client.secret | quote }}
-  {{- end }}
   {{- if .Values.drone.bitbucket.debug }}
   DRONE_BITBUCKET_DEBUG: {{ .Values.drone.bitbucket.debug | quote }}
   {{- end }}
@@ -39,16 +36,10 @@ data:
   {{- if .Values.drone.convertPlugin.extension }}
   DRONE_CONVERT_PLUGIN_EXTENSION: {{ .Values.drone.convertPlugin.extension | quote }}
   {{- end }}
-  {{- if .Values.drone.convertPlugin.secret }}
-  DRONE_CONVERT_PLUGIN_SECRET: {{ .Values.drone.convertPlugin.secret | quote }}
-  {{- end }}
   {{- if .Values.drone.convertPlugin.skipVerify }}
   DRONE_CONVERT_PLUGIN_SKIP_VERIFY: {{ .Values.drone.convertPlugin.skipVerify | quote }}
   {{- end }}
 
-  {{- if .Values.drone.cookie.secret }}
-  DRONE_COOKIE_SECRET: {{ .Values.drone.cookie.secret | quote }}
-  {{- end }}
   {{- if .Values.drone.cookie.timeout }}
   DRONE_COOKIE_TIMEOUT: {{ .Values.drone.cookie.timeout | quote }}
   {{- end }}
@@ -69,15 +60,9 @@ data:
   {{- if .Values.drone.database.maxConnections }}
   DRONE_DATABASE_MAX_CONNECTIONS: {{ .Values.drone.database.maxConnections | quote }}
   {{- end }}
-  {{- if .Values.drone.database.secret }}
-  DRONE_DATABASE_SECRET: {{ .Values.drone.database.secret | quote }}
-  {{- end }}
 
   {{- if .Values.drone.git.alwaysAuth }}
   DRONE_GIT_ALWAYS_AUTH: {{ .Values.drone.git.alwaysAuth | quote }}
-  {{- end }}
-  {{- if .Values.drone.git.password }}
-  DRONE_GIT_PASSWORD: {{ .Values.drone.git.password | quote }}
   {{- end }}
   {{- if .Values.drone.git.username }}
   DRONE_GIT_USERNAME: {{ .Values.drone.git.username | quote }}
@@ -85,9 +70,6 @@ data:
 
   {{- if .Values.drone.gitea.clientId }}
   DRONE_GITEA_CLIENT_ID: {{ .Values.drone.gitea.clientId | quote }}
-  {{- end }}
-  {{- if .Values.drone.gitea.clientSecret }}
-  DRONE_GITEA_CLIENT_SECRET: {{ .Values.drone.gitea.clientSecret | quote }}
   {{- end }}
   {{- if .Values.drone.gitea.server }}
   DRONE_GITEA_SERVER: {{ .Values.drone.gitea.server | quote }}
@@ -109,9 +91,6 @@ data:
   {{- if .Values.drone.github.client.id }}
   DRONE_GITHUB_CLIENT_ID: {{ .Values.drone.github.client.id | quote }}
   {{- end }}
-  {{- if .Values.drone.github.client.secret }}
-  DRONE_GITHUB_CLIENT_SECRET: {{ .Values.drone.github.client.secret | quote }}
-  {{- end }}
   {{- if .Values.drone.github.scope }}
   DRONE_GITHUB_SCOPE: {{ .Values.drone.github.scope | quote }}
   {{- end }}
@@ -124,9 +103,6 @@ data:
 
   {{- if .Values.drone.gitlab.client.id }}
   DRONE_GITLAB_CLIENT_ID: {{ .Values.drone.gitlab.client.id | quote }}
-  {{- end }}
-  {{- if .Values.drone.gitlab.client.secret }}
-  DRONE_GITLAB_CLIENT_SECRET: {{ .Values.drone.gitlab.client.secret | quote }}
   {{- end }}
   {{- if .Values.drone.gitlab.server }}
   DRONE_GITLAB_SERVER: {{ .Values.drone.gitlab.server | quote }}
@@ -176,10 +152,6 @@ data:
 
   {{- if .Values.drone.repositoryFilter }}
   DRONE_REPOSITORY_FILTER: {{ .Values.drone.repository.filter | quote }}
-  {{- end }}
-
-  {{- if .Values.drone.rpc.secret }}
-  DRONE_RPC_SECRET: {{ .Values.drone.rpc.secret | quote }}
   {{- end }}
 
   {{- if .Values.drone.s3.bucket }}
@@ -249,9 +221,6 @@ data:
   {{- if .Values.drone.validatePlugin.endpoint }}
   DRONE_VALIDATE_PLUGIN_ENDPOINT: {{ .Values.drone.validatePlugin.endpoint | quote }}
   {{- end }}
-  {{- if .Values.drone.validatePlugin.secret }}
-  DRONE_VALIDATE_PLUGIN_SECRET: {{ .Values.drone.validatePlugin.secret | quote }}
-  {{- end }}
   {{- if .Values.drone.validatePlugin.skipVerify }}
   DRONE_VALIDATE_PLUGIN_SKIP_VERIFY: {{ .Values.drone.validatePlugin.skipVerify | quote }}
   {{- end }}
@@ -261,9 +230,6 @@ data:
   {{- end }}
   {{- if .Values.drone.webhook.events }}
   DRONE_WEBHOOK_EVENTS: {{ .Values.drone.webhook.events | quote }}
-  {{- end }}
-  {{- if .Values.drone.webhook.secret }}
-  DRONE_WEBHOOK_SECRET: {{ .Values.drone.webhook.secret | quote }}
   {{- end }}
   {{- if .Values.drone.webhook.skipVerify }}
   DRONE_WEBHOOK_SKIP_VERIFY: {{ .Values.drone.webhook.skipVerify | quote }}
