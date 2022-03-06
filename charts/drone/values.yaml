@@ -47,15 +47,141 @@ tolerations: []
 affinity: {}
 
 drone:
-  rpcSecret: ""
-  cookieSecret: ""
+  bitbucket:
+    client:
+      id: ""
+      secret: ""
+    debug: ""
 
-  server:
-    host: localhost
-    proto: http
+  cleanup:
+    deadline:
+      pending: ""
+      running: ""
+    disabled: ""
+    interval: ""
 
-  github:
+  convertPlugin:
+    endpoint: ""
+    extension: ""
+    secret: ""
+    skipVerify: ""
+
+  cookie:
+    secret: ""
+    timeout: ""
+
+  cron:
+    disabled: ""
+    interval: ""
+
+  database:
+    datasource: ""
+    driver: ""
+    maxConnections: ""
+    secret: ""
+
+  git:
+    alwaysAuth: ""
+    password: ""
+    username: ""
+
+  gitea:
     clientId: ""
     clientSecret: ""
+    server: ""
+    skipVerify: ""
+
+  gitee:
+    redirectUrl: ""
+    scope: ""
+    skipVerify: ""
+
+  github:
+    client:
+      id: ""
+      secret: ""
+    scope: ""
+    server: ""
+    skipVerify: ""
+
+  gitlab:
+    client:
+      id: ""
+      secret: ""
+    server: ""
+    skipVerify: ""
+
+  gogs:
+    server: ""
+    skipVerify: ""
+
+  jsonnet:
+    enabled: ""
+
+  license: ""
+
+  logs:
+    color: ""
+    debug: ""
+    pretty: ""
+    text: ""
+    trace: ""
+
+  prometheus:
+    anonymousAccess: ""
+
+  registration:
+    closed: ""
+
+  repository:
+    filter: ""
+
+  rpc:
+    secret: ""
+
+  s3:
+    bucket: ""
+    endpoint: ""
+    pathStyle: ""
+    prefix: ""
+
+  server:
+    proxy:
+      host: localhost
+      proto: http
+
+  starlark:
+    enabled: ""
+    stepLimit: ""
+
+  stash:
+    consumerKey: ""
+    privateKey: ""
+    server: ""
+    skipVerify: ""
+
+  status:
+    disabled: ""
+    name: ""
+
+  tls:
+    autocert: ""
+    cert: ""
+    key: ""
+
+  user:
+    create: ""
+    filter: ""
+
+  validatePlugin:
+    endpoint: ""
+    secret: ""
+    skipVerify: ""
+
+  webhook:
+    endpoint: ""
+    events: ""
+    secret: ""
+    skipVerify: ""
 
   env: {}

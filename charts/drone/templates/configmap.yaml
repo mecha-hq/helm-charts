@@ -5,11 +5,271 @@ metadata:
   labels:
     {{- include "drone.labels" . | nindent 4 }}
 data:
+  # Mandatory Variables
   DRONE_SERVER_HOST: {{ .Values.drone.server.host | quote }}
   DRONE_SERVER_PROTO: {{ .Values.drone.server.proto | quote }}
-  {{- if .Values.drone.github.clientId }}
-  DRONE_GITHUB_CLIENT_ID: {{ .Values.drone.github.clientId | quote }}
+
+  # Optional Variables
+  {{- if .Values.drone.bitbucket.client.id }}
+  DRONE_BITBUCKET_CLIENT_ID: {{ .Values.drone.bitbucket.client.id | quote }}
   {{- end }}
+  {{- if .Values.drone.bitbucket.client.secret }}
+  DRONE_BITBUCKET_CLIENT_SECRET: {{ .Values.drone.bitbucket.client.secret | quote }}
+  {{- end }}
+  {{- if .Values.drone.bitbucket.debug }}
+  DRONE_BITBUCKET_DEBUG: {{ .Values.drone.bitbucket.debug | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.cleanup.deadline.pending }}
+  DRONE_CLEANUP_DEADLINE_PENDING: {{ .Values.drone.cleanup.deadline.pending | quote }}
+  {{- end }}
+  {{- if .Values.drone.cleanup.deadline.running }}
+  DRONE_CLEANUP_DEADLINE_RUNNING: {{ .Values.drone.cleanup.deadline.running | quote }}
+  {{- end }}
+  {{- if .Values.drone.cleanup.disabled }}
+  DRONE_CLEANUP_DISABLED: {{ .Values.drone.cleanup.disabled | quote }}
+  {{- end }}
+  {{- if .Values.drone.cleanup.interval }}
+  DRONE_CLEANUP_INTERVAL: {{ .Values.drone.cleanup.interval | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.convertPlugin.endpoint }}
+  DRONE_CONVERT_PLUGIN_ENDPOINT: {{ .Values.drone.convertPlugin.endpoint | quote }}
+  {{- end }}
+  {{- if .Values.drone.convertPlugin.extension }}
+  DRONE_CONVERT_PLUGIN_EXTENSION: {{ .Values.drone.convertPlugin.extension | quote }}
+  {{- end }}
+  {{- if .Values.drone.convertPlugin.secret }}
+  DRONE_CONVERT_PLUGIN_SECRET: {{ .Values.drone.convertPlugin.secret | quote }}
+  {{- end }}
+  {{- if .Values.drone.convertPlugin.skipVerify }}
+  DRONE_CONVERT_PLUGIN_SKIP_VERIFY: {{ .Values.drone.convertPlugin.skipVerify | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.cookie.secret }}
+  DRONE_COOKIE_SECRET: {{ .Values.drone.cookie.secret | quote }}
+  {{- end }}
+  {{- if .Values.drone.cookie.timeout }}
+  DRONE_COOKIE_TIMEOUT: {{ .Values.drone.cookie.timeout | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.cron.disabled }}
+  DRONE_CRON_DISABLED: {{ .Values.drone.cron.disabled | quote }}
+  {{- end }}
+  {{- if .Values.drone.cron.interval }}
+  DRONE_CRON_INTERVAL: {{ .Values.drone.cron.interval | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.database.datasource }}
+  DRONE_DATABASE_DATASOURCE: {{ .Values.drone.database.datasource | quote }}
+  {{- end }}
+  {{- if .Values.drone.database.driver }}
+  DRONE_DATABASE_DRIVER: {{ .Values.drone.database.driver | quote }}
+  {{- end }}
+  {{- if .Values.drone.database.maxConnections }}
+  DRONE_DATABASE_MAX_CONNECTIONS: {{ .Values.drone.database.maxConnections | quote }}
+  {{- end }}
+  {{- if .Values.drone.database.secret }}
+  DRONE_DATABASE_SECRET: {{ .Values.drone.database.secret | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.git.alwaysAuth }}
+  DRONE_GIT_ALWAYS_AUTH: {{ .Values.drone.git.alwaysAuth | quote }}
+  {{- end }}
+  {{- if .Values.drone.git.password }}
+  DRONE_GIT_PASSWORD: {{ .Values.drone.git.password | quote }}
+  {{- end }}
+  {{- if .Values.drone.git.username }}
+  DRONE_GIT_USERNAME: {{ .Values.drone.git.username | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.gitea.clientId }}
+  DRONE_GITEA_CLIENT_ID: {{ .Values.drone.gitea.clientId | quote }}
+  {{- end }}
+  {{- if .Values.drone.gitea.clientSecret }}
+  DRONE_GITEA_CLIENT_SECRET: {{ .Values.drone.gitea.clientSecret | quote }}
+  {{- end }}
+  {{- if .Values.drone.gitea.server }}
+  DRONE_GITEA_SERVER: {{ .Values.drone.gitea.server | quote }}
+  {{- end }}
+  {{- if .Values.drone.gitea.skipVerify }}
+  DRONE_GITEA_SKIP_VERIFY: {{ .Values.drone.gitea.skipVerify | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.gitee.redirectUrl }}
+  DRONE_GITEE_REDIRECT_URL: {{ .Values.drone.gitee.redirectUrl | quote }}
+  {{- end }}
+  {{- if .Values.drone.gitee.scope }}
+  DRONE_GITEE_SCOPE: {{ .Values.drone.gitee.scope | quote }}
+  {{- end }}
+  {{- if .Values.drone.gitee.skipVerify }}
+  DRONE_GITEE_SKIP_VERIFY: {{ .Values.drone.gitee.skipVerify | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.github.client.id }}
+  DRONE_GITHUB_CLIENT_ID: {{ .Values.drone.github.client.id | quote }}
+  {{- end }}
+  {{- if .Values.drone.github.client.secret }}
+  DRONE_GITHUB_CLIENT_SECRET: {{ .Values.drone.github.client.secret | quote }}
+  {{- end }}
+  {{- if .Values.drone.github.scope }}
+  DRONE_GITHUB_SCOPE: {{ .Values.drone.github.scope | quote }}
+  {{- end }}
+  {{- if .Values.drone.github.server }}
+  DRONE_GITHUB_SERVER: {{ .Values.drone.github.server | quote }}
+  {{- end }}
+  {{- if .Values.drone.github.skipVerify }}
+  DRONE_GITHUB_SKIP_VERIFY: {{ .Values.drone.github.skipVerify | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.gitlab.client.id }}
+  DRONE_GITLAB_CLIENT_ID: {{ .Values.drone.gitlab.client.id | quote }}
+  {{- end }}
+  {{- if .Values.drone.gitlab.client.secret }}
+  DRONE_GITLAB_CLIENT_SECRET: {{ .Values.drone.gitlab.client.secret | quote }}
+  {{- end }}
+  {{- if .Values.drone.gitlab.server }}
+  DRONE_GITLAB_SERVER: {{ .Values.drone.gitlab.server | quote }}
+  {{- end }}
+  {{- if .Values.drone.gitlab.skipVerify }}
+  DRONE_GITLAB_SKIP_VERIFY: {{ .Values.drone.gitlab.skipVerify | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.gogs.server }}
+  DRONE_GOGS_SERVER: {{ .Values.drone.gogs.server | quote }}
+  {{- end }}
+  {{- if .Values.drone.gogs.skipVerify }}
+  DRONE_GOGS_SKIP_VERIFY: {{ .Values.drone.gogs.skipVerify | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.jsonnet.enabled }}
+  DRONE_JSONNET_ENABLED: {{ .Values.drone.jsonnet.enabled | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.license }}
+  DRONE_LICENSE: {{ .Values.drone.license | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.logs.color }}
+  DRONE_LOGS_COLOR: {{ .Values.drone.logs.color | quote }}
+  {{- end }}
+  {{- if .Values.drone.logs.debug }}
+  DRONE_LOGS_DEBUG: {{ .Values.drone.logs.debug | quote }}
+  {{- end }}
+  {{- if .Values.drone.logs.pretty }}
+  DRONE_LOGS_PRETTY: {{ .Values.drone.logs.pretty | quote }}
+  {{- end }}
+  {{- if .Values.drone.logs.text }}
+  DRONE_LOGS_TEXT: {{ .Values.drone.logs.text | quote }}
+  {{- end }}
+  {{- if .Values.drone.logs.trace }}
+  DRONE_LOGS_TRACE: {{ .Values.drone.logs.trace | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.prometheus.anonymousAccess }}
+  DRONE_PROMETHEUS_ANONYMOUS_ACCESS: {{ .Values.drone.prometheus.anonymousAccess | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.registrationClosed }}
+  DRONE_REGISTRATION_CLOSED: {{ .Values.drone.registration.closed | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.repositoryFilter }}
+  DRONE_REPOSITORY_FILTER: {{ .Values.drone.repository.filter | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.rpc.secret }}
+  DRONE_RPC_SECRET: {{ .Values.drone.rpc.secret | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.s3.bucket }}
+  DRONE_S3_BUCKET: {{ .Values.drone.s3.bucket | quote }}
+  {{- end }}
+  {{- if .Values.drone.s3.endpoint }}
+  DRONE_S3_ENDPOINT: {{ .Values.drone.s3.endpoint | quote }}
+  {{- end }}
+  {{- if .Values.drone.s3.pathStyle }}
+  DRONE_S3_PATH_STYLE: {{ .Values.drone.s3.pathStyle | quote }}
+  {{- end }}
+  {{- if .Values.drone.s3.prefix }}
+  DRONE_S3_PREFIX: {{ .Values.drone.s3.prefix | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.server.proxy.host }}
+  DRONE_SERVER_PROXY_HOST: {{ .Values.drone.server.proxy.host | quote }}
+  {{- end }}
+  {{- if .Values.drone.server.proxy.proto }}
+  DRONE_SERVER_PROXY_PROTO: {{ .Values.drone.server.proxy.proto | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.starlark.enabled }}
+  DRONE_STARLARK_ENABLED: {{ .Values.drone.starlark.enabled | quote }}
+  {{- end }}
+  {{- if .Values.drone.starlark.stepLimit }}
+  DRONE_STARLARK_STEP_LIMIT: {{ .Values.drone.starlark.stepLimit | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.stash.consumerKey }}
+  DRONE_STASH_CONSUMER_KEY: {{ .Values.drone.stash.consumerKey | quote }}
+  {{- end }}
+  {{- if .Values.drone.stash.privateKey }}
+  DRONE_STASH_PRIVATE_KEY: {{ .Values.drone.stash.privateKey | quote }}
+  {{- end }}
+  {{- if .Values.drone.stash.server }}
+  DRONE_STASH_SERVER: {{ .Values.drone.stash.server | quote }}
+  {{- end }}
+  {{- if .Values.drone.stash.skipVerify }}
+  DRONE_STASH_SKIP_VERIFY: {{ .Values.drone.stash.skipVerify | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.status.disabled }}
+  DRONE_STATUS_DISABLED: {{ .Values.drone.status.disabled | quote }}
+  {{- end }}
+  {{- if .Values.drone.status.name }}
+  DRONE_STATUS_NAME: {{ .Values.drone.status.name | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.tls.autocert }}
+  DRONE_TLS_AUTOCERT: {{ .Values.drone.tls.autocert | quote }}
+  {{- end }}
+  {{- if .Values.drone.tls.cert }}
+  DRONE_TLS_CERT: {{ .Values.drone.tls.cert | quote }}
+  {{- end }}
+  {{- if .Values.drone.tls.key }}
+  DRONE_TLS_KEY: {{ .Values.drone.tls.key | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.user.create }}
+  DRONE_USER_CREATE: {{ .Values.drone.user.create | quote }}
+  {{- end }}
+  {{- if .Values.drone.user.filter }}
+  DRONE_USER_FILTER: {{ .Values.drone.user.filter | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.validatePlugin.endpoint }}
+  DRONE_VALIDATE_PLUGIN_ENDPOINT: {{ .Values.drone.validatePlugin.endpoint | quote }}
+  {{- end }}
+  {{- if .Values.drone.validatePlugin.secret }}
+  DRONE_VALIDATE_PLUGIN_SECRET: {{ .Values.drone.validatePlugin.secret | quote }}
+  {{- end }}
+  {{- if .Values.drone.validatePlugin.skipVerify }}
+  DRONE_VALIDATE_PLUGIN_SKIP_VERIFY: {{ .Values.drone.validatePlugin.skipVerify | quote }}
+  {{- end }}
+
+  {{- if .Values.drone.webhook.endpoint }}
+  DRONE_WEBHOOK_ENDPOINT: {{ .Values.drone.webhook.endpoint | quote }}
+  {{- end }}
+  {{- if .Values.drone.webhook.events }}
+  DRONE_WEBHOOK_EVENTS: {{ .Values.drone.webhook.events | quote }}
+  {{- end }}
+  {{- if .Values.drone.webhook.secret }}
+  DRONE_WEBHOOK_SECRET: {{ .Values.drone.webhook.secret | quote }}
+  {{- end }}
+  {{- if .Values.drone.webhook.skipVerify }}
+  DRONE_WEBHOOK_SKIP_VERIFY: {{ .Values.drone.webhook.skipVerify | quote }}
+  {{- end }}
+
+  # Extra variables
   {{- if .Values.drone.env }}
   {{- .Values.drone.env | toYaml | nindent 2 }}
   {{- end }}
