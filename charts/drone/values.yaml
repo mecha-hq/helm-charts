@@ -108,10 +108,6 @@ persistentVolume:
   ##
   existingClaim: ""
 
-  ## Drone server data Persistent Volume mount root path
-  ##
-  mountPath: /data
-
   ## Drone server data Persistent Volume size
   ##
   size: 8Gi

@@ -56,9 +56,11 @@ spec:
                 name: {{ . }}
           {{- end }}
           volumeMounts:
-            - name: storage-volume
-              mountPath: {{ .Values.persistentVolume.mountPath }}
+            {{- if .Values.persistentVolume.enabled }}
+            - name: data
+              mountPath: /data
               subPath: "{{ .Values.persistentVolume.subPath }}"
+            {{- end }}
           {{- with .Values.extraVolumeMounts }}
             {{ toYaml . | nindent 12 }}
           {{- end }}
@@ -75,18 +77,10 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        {{- /* This is where Drone stashes any data it needs to persist. If you use SQLite for your DB, state will go here. */}}
-        - name: storage-volume
         {{- if .Values.persistentVolume.enabled }}
+        - name: data
           persistentVolumeClaim:
-            claimName: {{- if .Values.persistentVolume.existingClaim }}{{ .Values.persistentVolume.existingClaim }}{{- else }}{{ template "drone.fullname" . }}{{- end }}
-        {{- else }}
-          emptyDir:
-          {{- if .Values.emptyDir.sizeLimit }}
-            sizeLimit: {{ .Values.emptyDir.sizeLimit }}
-          {{- else }}
-            {}
-          {{- end }}
+            claimName: {{ if .Values.persistentVolume.existingClaim }}{{ .Values.persistentVolume.existingClaim }}{{- else }}{{ template "drone.fullname" . }}{{- end }}
         {{- end }}
       {{- if .Values.extraVolumes }}
         {{ toYaml .Values.extraVolumes | nindent 8 }}
