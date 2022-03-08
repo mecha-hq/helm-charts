@@ -1,8 +1,8 @@
 # Drone server
 
-[Drone](http://drone.io/) is a Continuous Integration platform built on container technology with native Kubernetes support.
+[Drone](https://www.drone.io/) is a Continuous Integration platform built on container technology with native Kubernetes support.
 
-This Chart is for installing [Drone server](https://docs.drone.io/installation/overview/).
+This Chart is for installing [Drone server](https://docs.drone.io/server/overview/).
 
 ## Installing Drone server
 
@@ -10,7 +10,7 @@ See the [drone chart installation guide](./docs/install.md).
 
 ## Configuring Drone server
 
-See [values.yaml](values.yaml) to see the Chart's default values. Refer to the [Drone server reference](https://docs.drone.io/installation/reference/) for a more complete list of options.
+See [values.yaml](values.yaml) to see the Chart's default values. Refer to the [Drone server reference](https://docs.drone.io/server/reference/) for a more complete list of options.
 
 To adjust an existing Drone install's configuration:
 
@@ -23,7 +23,7 @@ helm upgrade drone drone/drone --namespace drone --reuse-values --set someKey=so
 
 ## Upgrading Drone server
 
-Read the [release notes](https://discourse.drone.io/c/announcements/6) to make sure there are no backwards incompatible changes. Make adjustments to your values as needed, then run `helm upgrade`:
+Read the [release notes](https://github.com/harness/drone/blob/master/CHANGELOG.md) to make sure there are no backwards incompatible changes. Make adjustments to your values as needed, then run `helm upgrade`:
 
 ```console
 # This pulls the latest version of the drone chart from the repo.
@@ -43,4 +43,4 @@ Substitute your values if they differ from the examples. See `helm delete --help
 
 ## Support
 
-For questions, suggestions, and discussion, visit the [Drone community site](https://discourse.drone.io/).
+For questions, suggestions, and discussion, visit the [Harness community site](https://community.harness.io/).

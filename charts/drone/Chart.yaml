@@ -5,8 +5,7 @@ type: application
 version: 0.2.0
 appVersion: "2.9.1"
 kubeVersion: "^1.13.0-0"
-home: https://drone.io/
-icon: https://drone.io/apple-touch-icon.png
+home: https://www.drone.io/
 keywords:
   - continuous-delivery
   - continuous-deployment
@@ -16,8 +15,8 @@ keywords:
   - drone.io
   - go
 sources:
-  - https://github.com/drone/drone
-  - https://github.com/drone/helm
+  - https://github.com/harness/drone
+  - https://github.com/FriendsOfDrone/helm-charts
 maintainers:
   - name: adnsio
     email: hello@adns.io
