@@ -17,7 +17,8 @@ spec:
       labels:
         {{- include "drone.selectorLabels" . | nindent 8 }}
       annotations:
-        checksum/secrets: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secrets: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
       {{- if .Values.podAnnotations }}
         {{ toYaml .Values.podAnnotations | nindent 8 }}
       {{- end }}
