@@ -5,11 +5,10 @@ metadata:
   labels:
     {{- include "drone.labels" . | nindent 4 }}
 data:
-  DRONE_SERVER_HOST: {{ .Values.drone.server.host | quote }}
-  DRONE_SERVER_PROTO: {{ .Values.drone.server.proto | quote }}
-  {{- if .Values.drone.github.clientId }}
-  DRONE_GITHUB_CLIENT_ID: {{ .Values.drone.github.clientId | quote }}
-  {{- end }}
-  {{- if .Values.drone.env }}
-  {{- .Values.drone.env | toYaml | nindent 2 }}
+  {{- /*
+    Rather than maintain a comprehensive ConfigMap, we map all sub-keys of the "env" value here.
+    This allows for more flexibility and less Chart churn as Drone evolves.
+  */}}
+  {{- range $envKey, $envVal := .Values.env }}
+  {{ $envKey | upper }}: {{ $envVal | quote }}
   {{- end }}

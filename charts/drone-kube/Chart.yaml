@@ -1,6 +1,6 @@
 apiVersion: v2
 name: drone-kube
-description: Drone Kubernetes helm chart
+description: Friends of Drone's Drone Kubernetes Runner helm chart
 type: application
 version: 0.1.0
 appVersion: "1.0.0-rc.2"

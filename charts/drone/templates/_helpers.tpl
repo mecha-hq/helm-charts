@@ -48,15 +48,5 @@ Selector labels
 {{- define "drone.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "drone.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "drone.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "drone.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
+app.kubernetes.io/component: server
 {{- end }}

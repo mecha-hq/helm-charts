@@ -1,12 +1,26 @@
+{{- if .Values.persistentVolume.enabled }}
+{{- if not .Values.persistentVolume.existingClaim }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "drone.fullname" . }}-data
+  {{- if .Values.persistentVolume.annotations }}
+  annotations:
+    {{- toYaml .Values.persistentVolume.annotations | nindent 4 }}
+  {{- end }}
   labels:
     {{- include "drone.labels" . | nindent 4 }}
+  name: {{ template "drone.fullname" . }}
 spec:
+  accessModes:
+    {{- toYaml .Values.persistentVolume.accessModes | nindent 4 }}
+  {{- if .Values.persistentVolume.storageClassName }}
+  storageClassName: "{{ .Values.persistentVolume.storageClassName }}"
+  {{- end }}
+  {{- if .Values.persistentVolume.volumeMode }}
+  volumeMode: "{{ .Values.persistentVolume.volumeMode }}"
+  {{- end }}
   resources:
     requests:
-      storage: 2Gi
-  accessModes:
-    - ReadWriteOnce
+      storage: "{{ .Values.persistentVolume.size }}"
+{{- end }}
+{{- end }}
