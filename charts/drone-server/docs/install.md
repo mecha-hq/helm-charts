@@ -81,7 +81,7 @@ namespace/drone created
 Run `helm install` with your values provided:
 
 ```console
-$ helm install --namespace drone drone FriendsOfDrone/drone-server -f drone-values.yaml
+$ helm install --namespace drone drone mecha-ci/drone-server -f drone-values.yaml
 ```
 
 To break down the above, this command means: "install the `drone/drone` chart as a Helm release named `drone` in the `drone` namespace. The `drone-values.yaml` file will be used for configuring Drone." See `helm install --help` for a full list of parameters and flags.

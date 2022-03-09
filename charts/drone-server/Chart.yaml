@@ -1,6 +1,6 @@
 apiVersion: v2
 name: drone
-description: Friends of Drone's Drone Server helm chart
+description: Mecha CI's Drone Server Helm Chart
 type: application
 version: 0.2.0
 appVersion: "2.9.1"
@@ -16,7 +16,7 @@ keywords:
   - go
 sources:
   - https://github.com/harness/drone
-  - https://github.com/FriendsOfDrone/helm-charts
+  - https://github.com/mecha-ci/helm-charts
 maintainers:
   - name: adnsio
     email: hello@adns.io
