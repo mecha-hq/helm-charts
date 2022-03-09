@@ -8,8 +8,8 @@ metadata:
     {{- toYaml .Values.persistentVolume.annotations | nindent 4 }}
   {{- end }}
   labels:
-    {{- include "drone.labels" . | nindent 4 }}
-  name: {{ template "drone.fullname" . }}
+    {{- include "drone-server.labels" . | nindent 4 }}
+  name: {{ template "drone-server.fullname" . }}
 spec:
   accessModes:
     {{- toYaml .Values.persistentVolume.accessModes | nindent 4 }}

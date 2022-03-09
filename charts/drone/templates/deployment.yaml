@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "drone.fullname" . }}
+  name: {{ include "drone-server.fullname" . }}
   labels:
-    {{- include "drone.labels" . | nindent 4 }}
+    {{- include "drone-server.labels" . | nindent 4 }}
 spec:
   {{- /* Drone server is a singleton. */}}
   replicas: 1
   selector:
     matchLabels:
-      {{- include "drone.selectorLabels" . | nindent 6 }}
+      {{- include "drone-server.selectorLabels" . | nindent 6 }}
   strategy:
     {{ toYaml .Values.strategy | indent 4 }}
   template:
     metadata:
       labels:
-        {{- include "drone.selectorLabels" . | nindent 8 }}
+        {{- include "drone-server.selectorLabels" . | nindent 8 }}
       annotations:
         checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
@@ -48,9 +48,9 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
             - configMapRef:
-                name: {{ include "drone.fullname" . }}
+                name: {{ include "drone-server.fullname" . }}
             - secretRef:
-                name: {{ include "drone.fullname" . }}
+                name: {{ include "drone-server.fullname" . }}
           {{- range .Values.extraSecretNamesForEnvFrom }}
             - secretRef:
                 name: {{ . }}
@@ -80,7 +80,7 @@ spec:
         {{- if .Values.persistentVolume.enabled }}
         - name: data
           persistentVolumeClaim:
-            claimName: {{ if .Values.persistentVolume.existingClaim }}{{ .Values.persistentVolume.existingClaim }}{{- else }}{{ template "drone.fullname" . }}{{- end }}
+            claimName: {{ if .Values.persistentVolume.existingClaim }}{{ .Values.persistentVolume.existingClaim }}{{- else }}{{ template "drone-server.fullname" . }}{{- end }}
         {{- end }}
       {{- if .Values.extraVolumes }}
         {{ toYaml .Values.extraVolumes | nindent 8 }}

@@ -16,9 +16,9 @@ To adjust an existing Drone install's configuration:
 
 ```console
 # If you have a values file:
-helm upgrade drone drone/drone --namespace drone --values drone-values.yaml
+helm upgrade drone FriendsOfDrone/drone-server --namespace drone --values drone-values.yaml
 # If you want to change one value and don't have a values file:
-helm upgrade drone drone/drone --namespace drone --reuse-values --set someKey=someVal
+helm upgrade drone FriendsOfDrone/drone-server --namespace drone --reuse-values --set someKey=someVal
 ```
 
 ## Upgrading Drone server
@@ -28,7 +28,7 @@ Read the [release notes](https://github.com/harness/drone/blob/master/CHANGELOG.
 ```console
 # This pulls the latest version of the drone chart from the repo.
 helm repo update
-helm upgrade drone drone/drone --namespace drone --values drone-values.yaml
+helm upgrade drone FriendsOfDrone/drone-server --namespace drone --values drone-values.yaml
 ```
 
 ## Uninstalling Drone server

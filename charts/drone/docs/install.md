@@ -35,10 +35,10 @@ Once we have a values file started with the essentials, the next step is to conf
 Visit the page that corresponds to your chosen provider in the [Drone install guide](https://docs.drone.io/installation/overview/) and follow the setup instructions. The environment variables listed on the page will be added to our `drone-values.yaml` under the `env` map. Here's an example of a typical GitHub.com configuration:
 
 ```yaml
-  ## GitHub provider configuration.
-  ## Ref: https://docs.drone.io/installation/providers/github/
-  DRONE_GITHUB_CLIENT_ID: xxxxxxxxxxxxxxxxxxxxxxx
-  DRONE_GITHUB_CLIENT_SECRET: yyyyyyyyyyyyyyyyyyyyy
+## GitHub provider configuration.
+## Ref: https://docs.drone.io/installation/providers/github/
+DRONE_GITHUB_CLIENT_ID: xxxxxxxxxxxxxxxxxxxxxxx
+DRONE_GITHUB_CLIENT_SECRET: yyyyyyyyyyyyyyyyyyyyy
 ```
 
 **Tip: If you use a provider other than GitHub.com, you'll have different environment variables.**
@@ -81,7 +81,7 @@ namespace/drone created
 Run `helm install` with your values provided:
 
 ```console
-$ helm install --namespace drone drone drone/drone -f drone-values.yaml
+$ helm install --namespace drone drone FriendsOfDrone/drone-server -f drone-values.yaml
 ```
 
 To break down the above, this command means: "install the `drone/drone` chart as a Helm release named `drone` in the `drone` namespace. The `drone-values.yaml` file will be used for configuring Drone." See `helm install --help` for a full list of parameters and flags.
@@ -110,8 +110,8 @@ If you see the "starting the server" text above without error, Drone server is r
 
 To expose Drone server to your network (or the world), there are several options:
 
-* [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-* [Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/) - Typically of Type=Loadbalancer or sometimes NodePort.
+- [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/) - Typically of Type=Loadbalancer or sometimes NodePort.
 
 These topics are outside the scope of this guide, but see the chart's [values.yaml](../values.yaml) to get a feel for possibilities. Don't hesitate to ask questions in the [Drone community site](https://discourse.drone.io/) as needed.
 
