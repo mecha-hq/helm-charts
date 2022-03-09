@@ -48,6 +48,7 @@ Selector labels
 {{- define "drone-runner-kubernetes.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "drone-runner-kubernetes.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/component: runner-kubernetes
 {{- end }}
 
 {{/*
