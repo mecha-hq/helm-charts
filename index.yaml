@@ -1,0 +1,43 @@
+apiVersion: v1
+entries:
+  drone:
+  - apiVersion: v2
+    appVersion: 2.9.1
+    created: "2022-03-09T11:02:00.248382927Z"
+    description: Mecha CI's Drone Server Helm Chart
+    digest: 6c9ece22c56af99ed8e2ef57b940d5a1b1e5638cf78e4c3618639368d6d3fa64
+    home: https://www.drone.io/
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - drone
+    - drone.io
+    - go
+    kubeVersion: ^1.13.0-0
+    maintainers:
+    - email: hello@adns.io
+      name: adnsio
+    - email: claudi0.beatric3@gmail.com
+      name: omissis
+    name: drone
+    sources:
+    - https://github.com/harness/drone
+    - https://github.com/mecha-ci/helm-charts
+    type: application
+    urls:
+    - https://github.com/mecha-ci/helm-charts/releases/download/drone-0.2.0/drone-0.2.0.tgz
+    version: 0.2.0
+  drone-runner-kubernetes:
+  - apiVersion: v2
+    appVersion: 1.0.0-rc.2
+    created: "2022-03-09T11:02:00.468455926Z"
+    description: Mecha CI's Drone Kubernetes Runner Helm Chart
+    digest: abdb80ce9134479ff1b889fc2f1fb7a34e72df9917269b4bc4bb2421536c3028
+    name: drone-runner-kubernetes
+    type: application
+    urls:
+    - https://github.com/mecha-ci/helm-charts/releases/download/drone-runner-kubernetes-0.1.0/drone-runner-kubernetes-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-03-09T11:02:00.468461526Z"
