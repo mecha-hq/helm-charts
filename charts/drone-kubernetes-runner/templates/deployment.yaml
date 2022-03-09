@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "drone-kube.fullname" . }}
+  name: {{ include "drone-runner-kubernetes.fullname" . }}
   labels:
-    {{- include "drone-kube.labels" . | nindent 4 }}
+    {{- include "drone-runner-kubernetes.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "drone-kube.selectorLabels" . | nindent 6 }}
+      {{- include "drone-runner-kubernetes.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "drone-kube.selectorLabels" . | nindent 8 }}
+        {{- include "drone-runner-kubernetes.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "drone-kube.serviceAccountName" . }}
+      serviceAccountName: {{ include "drone-runner-kubernetes.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -37,16 +37,16 @@ spec:
             - name: DRONE_RPC_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "drone-kube.fullname" . }}
+                  name: {{ include "drone-runner-kubernetes.fullname" . }}
                   key: rpcSecret
             - name: DRONE_UI_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "drone-kube.fullname" . }}
+                  name: {{ include "drone-runner-kubernetes.fullname" . }}
                   key: uiPassword
           envFrom:
             - configMapRef:
-                name: {{ include "drone-kube.fullname" . }}
+                name: {{ include "drone-runner-kubernetes.fullname" . }}
           ports:
             - name: http
               containerPort: 3000
